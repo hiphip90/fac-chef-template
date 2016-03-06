@@ -1,19 +1,20 @@
-# Rails Server Template
+# FAC Chef template
 
-## Overview
+## Configuration
 
-This is a template chef structure for deploying Rails applications. The example template and Vagrantfile provide a single VM configuration which works out of the box and can be used to deploy any Rails 3.x or 4.x application. It's most suitable as a drop in Heroku replacement for low traffic apps.
+Rename `data_bags/users/deployer.json.example` to `deployer.json` and fill in ssh keys and deploy user's password. Keep in mind, that password must be represented as hash.
+One can generate it by running `openssl passwd -1 "plaintextpassword"` in terminal.
 
-The configuration is also flexible enough to be adapted to multi machine setups.
+Rename `nodes/your_host.json.example` to `your_host.json` and replace `your_host` with actual hostname or ip address of server.
+Fill this file with actual configuration data. Again, all passwords, except for the one for monit must be in the form of the hash.
 
-## Documentation
+## Usage
 
-This is the example code which section one of the book "Reliably Deploying Rails Applications" available from leanpub here <https://leanpub.com/deploying_rails_applications> is based.
+1) `bundle install`
 
-If you run into any issues using the template provided here, please open a Github issue, I actively monitor these and will respond as quickly as possible.
+2) `berks install`
 
-## Requirements
+3) `knife solo prepare`
 
-This template is designed to work on Ubuntu 14.04 (the current LTS) and is tested regularly against Digital Ocean and Linode.
+4) `knife solo cook`
 
-When opening an issue, please include the Ubuntu version and provider the issue was encountered on.
