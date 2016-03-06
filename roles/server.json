@@ -21,7 +21,7 @@
         // everyone in the group sysadmin gets sudo rights
         "groups": ["sysadmin"],
         // the deploy user specifically gets sudo rights
-        "users": ["deploy"],
+        "users": ["deployer"],
         // whether a user with sudo rights can execute sudo
         // commands without entering their password.
         "passwordless": true
@@ -97,7 +97,9 @@
     // individual apps/ a separate recipe)
     "recipe[monit-tlq::default]",
     // monit configurations for a standard ubuntu system
-    "recipe[monit_configs-tlq::system]"
+    "recipe[monit_configs-tlq::system]",
+    // install nodejs
+    "recipe[nodejs::nodejs_from_package]"
   ],
   "chef_type": "role",
   "override_attributes": {

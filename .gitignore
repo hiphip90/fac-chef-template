@@ -1,4 +1,6 @@
 data_bags/users/*.json
+nodes/*
+!nodes/your_host.json.example
 cookbooks/**/*
 .ruby-version
 .ruby-gemset

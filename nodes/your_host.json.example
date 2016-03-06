@@ -8,39 +8,39 @@
       // The password for the deploy user is set in data_bags/users/deploy.json
       // and should be generated using:
       // openssl passwd -1 "plaintextpassword"
-      "users": ["deploy"]
+      "users": ["deployer"]
     }
   },
   "monit": {
     "enable_emails" : false,
     "mailserver" : {
       // For example Mailgun or Sendgrid
-      "host" : "REPLACE.example.com",
-      "port" : "999",
-      "username" : "REPLACE",
-      "password" : "REPLACE",
+      "host" : "host",
+      "port" : "587",
+      "username" : "username",
+      "password" : "pass",
       "hostname" : "REPLACE"
     },
-    "notify_emails" : ["REPLACE@example.com"],
+    "notify_emails" : ["recipient_email_address"],
     "web_interface" : {
       // the plaintext monit username and password
-      "allow" : ["REPLACE(USERNAME)","REPLACE(PASSWORD)"]
+      "allow" : ["user","pass"]
     }
   },
   "postgresql" : {
     "password" : {
       // this should be generated with:
       // openssl passwd -1 "plaintextpassword"
-      "postgres" : "REPLACE"
+      "postgres" : "postgres_pass_salt"
     }
   },
   "rbenv":{
     "rubies": [
-      "2.1.2"
+      "2.2.2"
     ],
-    "global" : "2.1.2",
+    "global" : "2.2.2",
     "gems": {
-      "2.1.2" : [
+      "2.2.2" : [
         {"name":"bundler"}
       ]
     }
@@ -56,7 +56,6 @@
     "role[server]",
     "role[nginx-server]",
     "role[postgres-server]",
-    "role[rails-app]",
-    "role[redis-server]"
+    "role[rails-app]"
   ]
 }
